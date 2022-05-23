@@ -13,6 +13,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from keras import models
 from keras import layers
 from sklearn.preprocessing import OneHotEncoder
+from skimage.measure import block_reduce
 
 scaler = StandardScaler()
 def rescale(collection):
@@ -27,28 +28,41 @@ def im_2_persim(collection,B=10):
     persim  = gtda.diagrams.PersistenceImage(n_bins=B)
     diagrams = cubpers.fit_transform(collection)
     im = persim.fit_transform(diagrams)
-    return np.reshape(im,(1797,2*B*B))
+    return np.reshape(im,(len(im),2*B*B))
 
 
-def topfiltlearn(X,y,filters):
+def topfiltlearn(X,y,filters,pool=False):
     np.random.seed(0)
     enc = OneHotEncoder(sparse=False)
     labels = enc.fit_transform(y.reshape(-1,1))
 
     datasets = [X]
-    for f in filters:
-        Xf = []
-        for im in X:
-            Xf.append(convolve2d(im,f,'same'))
-        datasets.append(Xf)
+    if filters:
+        for f in filters:
+            Xf = []
+            for im in X:
+                Xf.append(convolve2d(im,f,'same'))
+            datasets.append(Xf)
 
     for idx,D in enumerate(datasets):
         datasets[idx] = rescale(D)
 
+
+    if pool:
+        (a,b,c,d) = np.shape(datasets)
+        pooled_datasets = np.zeros(shape = (a,b,int(c/2),int(d/2)))
+        for id1, D in enumerate(datasets):
+            for id2, im in enumerate(D):
+                pooled_datasets[id1][id2] = block_reduce(im,(2,2),np.mean)
+        datasets=pooled_datasets
+
+
+
+
     diagrams = []
     for D in datasets:
         diagrams.append(im_2_persim(D))
-        
+            
     total_diagrams = np.concatenate(diagrams,axis = 1)
     #print(np.shape(total_diagrams))
 
