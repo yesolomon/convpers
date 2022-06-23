@@ -1,0 +1,229 @@
+% \bib, bibdiv, biblist are defined by the amsrefs package.
+\begin{bibdiv}
+\begin{biblist}
+
+\bib{buchet2014topological}{article}{
+      author={Buchet, Micka{\"e}l},
+      author={Chazal, Fr{\'e}d{\'e}ric},
+      author={Dey, Tamal~K},
+      author={Fan, Fengtao},
+      author={Oudot, Steve~Y},
+      author={Wang, Yusu},
+       title={Topological analysis of scalar fields with outliers},
+        date={2014},
+     journal={arXiv preprint arXiv:1412.1680},
+}
+
+\bib{bleile2021persistent}{article}{
+      author={Bleile, Bea},
+      author={Garin, Ad{\'e}lie},
+      author={Heiss, Teresa},
+      author={Maggs, Kelly},
+      author={Robins, Vanessa},
+       title={The persistent homology of dual digital image constructions},
+        date={2021},
+     journal={arXiv preprint arXiv:2102.11397},
+}
+
+\bib{carlsson2009topology}{article}{
+      author={Carlsson, Gunnar},
+       title={Topology and data},
+        date={2009},
+     journal={Bulletin of the American Mathematical Society},
+      volume={46},
+      number={2},
+       pages={255\ndash 308},
+}
+
+\bib{carriere2021optimizing}{article}{
+      author={Carriere, Mathieu},
+      author={Chazal, Fr{\'e}d{\'e}ric},
+      author={Glisse, Marc},
+      author={Ike, Yuichi},
+      author={Kannan, Hariprasad},
+       title={Optimizing persistent homology based functions},
+        date={2021},
+}
+
+\bib{curry2018many}{article}{
+      author={Curry, Justin},
+      author={Mukherjee, Sayan},
+      author={Turner, Katharine},
+       title={How many directions determine a shape and other sufficiency
+  results for two topological transforms},
+        date={2018},
+     journal={arXiv preprint arXiv:1805.09782},
+}
+
+\bib{cohen2007stability}{article}{
+      author={Cohen-Steiner, David},
+      author={Edelsbrunner, Herbert},
+      author={Harer, John},
+       title={Stability of persistence diagrams},
+        date={2007},
+     journal={Discrete \& computational geometry},
+      volume={37},
+      number={1},
+       pages={103\ndash 120},
+}
+
+\bib{curry2018fiber}{article}{
+      author={Curry, Justin},
+       title={The fiber of the persistence map for functions on the interval},
+        date={2018},
+     journal={Journal of Applied and Computational Topology},
+      volume={2},
+      number={3},
+       pages={301\ndash 321},
+}
+
+\bib{edelsbrunner2010computational}{article}{
+      author={Edelsbrunner, Herbert},
+      author={Harer, John},
+       title={Computational topology: an introduction},
+        date={2010},
+}
+
+\bib{gameiro2016continuation}{article}{
+      author={Gameiro, Marcio},
+      author={Hiraoka, Yasuaki},
+      author={Obayashi, Ippei},
+       title={Continuation of point clouds via persistence diagrams},
+        date={2016},
+     journal={Physica D: Nonlinear Phenomena},
+      volume={334},
+       pages={118\ndash 132},
+}
+
+\bib{ghrist2008barcodes}{article}{
+      author={Ghrist, Robert},
+       title={Barcodes: the persistent topology of data},
+        date={2008},
+     journal={Bulletin of the American Mathematical Society},
+      volume={45},
+      number={1},
+       pages={61\ndash 75},
+}
+
+\bib{ghrist2018persistent}{article}{
+      author={Ghrist, Robert},
+      author={Levanger, Rachel},
+      author={Mai, Huy},
+       title={Persistent homology and euler integral transforms},
+        date={2018},
+     journal={Journal of Applied and Computational Topology},
+      volume={2},
+      number={1},
+       pages={55\ndash 60},
+}
+
+\bib{lacombe2018large}{article}{
+      author={Lacombe, Th{\'e}o},
+      author={Cuturi, Marco},
+      author={Oudot, Steve},
+       title={Large scale computation of means and clusters for persistence
+  diagrams using optimal transport},
+        date={2018},
+     journal={Advances in Neural Information Processing Systems},
+      volume={31},
+}
+
+\bib{leygonie2021algorithmic}{article}{
+      author={Leygonie, Jacob},
+      author={Henselman-Petrusek, Gregory},
+       title={Algorithmic reconstruction of the fiber of persistent homology on
+  cell complexes},
+        date={2021},
+     journal={arXiv preprint arXiv:2110.14676},
+}
+
+\bib{leygonie2021fiber}{article}{
+      author={Leygonie, Jacob},
+      author={Tillmann, Ulrike},
+       title={The fiber of persistent homology for simplicial complexes},
+        date={2021},
+     journal={arXiv preprint arXiv:2104.01372},
+}
+
+\bib{milosavljevic2011zigzag}{inproceedings}{
+      author={Milosavljevi{\'c}, Nikola},
+      author={Morozov, Dmitriy},
+      author={Skraba, Primoz},
+       title={Zigzag persistent homology in matrix multiplication time},
+        date={2011},
+   booktitle={Proceedings of the twenty-seventh annual symposium on
+  computational geometry},
+       pages={216\ndash 225},
+}
+
+\bib{otter2017roadmap}{article}{
+      author={Otter, Nina},
+      author={Porter, Mason~A},
+      author={Tillmann, Ulrike},
+      author={Grindrod, Peter},
+      author={Harrington, Heather~A},
+       title={A roadmap for the computation of persistent homology},
+        date={2017},
+     journal={EPJ Data Science},
+      volume={6},
+       pages={1\ndash 38},
+}
+
+\bib{oudot2015persistence}{book}{
+      author={Oudot, Steve~Y},
+       title={Persistence theory: from quiver representations to data
+  analysis},
+   publisher={American Mathematical Society Providence},
+        date={2015},
+      volume={209},
+}
+
+\bib{poulenard2018topological}{inproceedings}{
+      author={Poulenard, Adrien},
+      author={Skraba, Primoz},
+      author={Ovsjanikov, Maks},
+       title={Topological function optimization for continuous shape matching},
+organization={Wiley Online Library},
+        date={2018},
+   booktitle={Computer graphics forum},
+      volume={37},
+       pages={13\ndash 25},
+}
+
+\bib{solomon2021geometry}{article}{
+      author={Solomon, Elchanan},
+      author={Wagner, Alexander},
+      author={Bendich, Paul},
+       title={From geometry to topology: Inverse theorems for distributed
+  persistence},
+        date={2021},
+     journal={arXiv preprint arXiv:2101.12288},
+}
+
+\bib{solomon2021fast}{inproceedings}{
+      author={Solomon, Yitzchak},
+      author={Wagner, Alexander},
+      author={Bendich, Paul},
+       title={A fast and robust method for global topological functional
+  optimization},
+organization={PMLR},
+        date={2021},
+   booktitle={International conference on artificial intelligence and
+  statistics},
+       pages={109\ndash 117},
+}
+
+\bib{turner2014persistent}{article}{
+      author={Turner, Katharine},
+      author={Mukherjee, Sayan},
+      author={Boyer, Doug~M},
+       title={Persistent homology transform for modeling shapes and surfaces},
+        date={2014},
+     journal={Information and Inference: A Journal of the IMA},
+      volume={3},
+      number={4},
+       pages={310\ndash 344},
+}
+
+\end{biblist}
+\end{bibdiv}
