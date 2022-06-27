@@ -117,6 +117,32 @@
        pages={55\ndash 60},
 }
 
+\bib{jiang2020weighted}{inproceedings}{
+      author={Jiang, Qitong},
+      author={Kurtek, Sebastian},
+      author={Needham, Tom},
+       title={The weighted euler curve transform for shape and image analysis},
+        date={2020},
+   booktitle={Proceedings of the ieee/cvf conference on computer vision and
+  pattern recognition workshops},
+       pages={844\ndash 845},
+}
+
+\bib{kim2020pllay}{article}{
+      author={Kim, Kwangho},
+      author={Kim, Jisu},
+      author={Zaheer, Manzil},
+      author={Kim, Joon},
+      author={Chazal, Fr{\'e}d{\'e}ric},
+      author={Wasserman, Larry},
+       title={Pllay: Efficient topological layer based on persistent
+  landscapes},
+        date={2020},
+     journal={Advances in Neural Information Processing Systems},
+      volume={33},
+       pages={15965\ndash 15977},
+}
+
 \bib{lacombe2018large}{article}{
       author={Lacombe, Th{\'e}o},
       author={Cuturi, Marco},
@@ -156,6 +182,16 @@
        pages={216\ndash 225},
 }
 
+\bib{maria2019intrinsic}{article}{
+      author={Maria, Cl{\'e}ment},
+      author={Oudot, Steve},
+      author={Solomon, Elchanan},
+       title={Intrinsic topological transforms via the distance kernel
+  embedding},
+        date={2019},
+     journal={arXiv preprint arXiv:1912.02225},
+}
+
 \bib{otter2017roadmap}{article}{
       author={Otter, Nina},
       author={Porter, Mason~A},
@@ -167,6 +203,24 @@
      journal={EPJ Data Science},
       volume={6},
        pages={1\ndash 38},
+}
+
+\bib{oudot2017barcode}{article}{
+      author={Oudot, Steve},
+      author={Solomon, Elchanan},
+       title={Barcode embeddings for metric graphs},
+        date={2017},
+     journal={arXiv preprint arXiv:1712.03630},
+}
+
+\bib{oudot2020inverse}{incollection}{
+      author={Oudot, Steve},
+      author={Solomon, Elchanan},
+       title={Inverse problems in topological persistence},
+        date={2020},
+   booktitle={Topological data analysis},
+   publisher={Springer},
+       pages={405\ndash 433},
 }
 
 \bib{oudot2015persistence}{book}{

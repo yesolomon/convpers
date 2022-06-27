@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6700 64-bit) (preloaded format=pdflatex 2018.6.5)  23 JUN 2022 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6700 64-bit) (preloaded format=pdflatex 2018.6.5)  27 JUN 2022 17:00
 entering extended mode
 **./convpers.tex
 (convpers.tex
@@ -1118,8 +1118,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 95--96
-[]\OT1/ptm/m/n/10 (Invertibility) There ex-ist many space-function pairs
+Underfull \hbox (badness 1365) in paragraph at lines 98--99
+\OT1/ptm/m/n/10 re-sult-ing col-lec-tion of low-resolution out-puts. Since this
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
  []
 
 [1{C:/Users/Elchanan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
@@ -1131,7 +1137,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
  []
 
 
+Underfull \hbox (badness 2865) in paragraph at lines 112--113
+\OT1/ptm/m/n/10 sublevel-sets evolves, the ad-di-tion of cer-tain edges or
+ []
+
+
+Underfull \hbox (badness 1622) in paragraph at lines 112--113
+\OT1/ptm/m/n/10 ho-mol-ogy can change when two con-nected com-po-nents
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 112--113
+
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 114--115
+[]\OT1/ptm/m/n/10 A bar-code can also be en-coded as a col-lec-tion of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
@@ -1143,21 +1169,16 @@ Package epstopdf Info: Source file: <cubpers.eps>
 (epstopdf)                    size: 13037 bytes
 (epstopdf)             Command: <epstopdf --outfile=cubpers-eps-converted-to.pd
 f cubpers.eps>
-(epstopdf)             \includegraphics on input line 116.
+(epstopdf)             \includegraphics on input line 118.
 Package epstopdf Info: Output file is already uptodate.
 <cubpers-eps-converted-to.pdf, id=18, 515.9275pt x 547.04375pt>
 File: cubpers-eps-converted-to.pdf Graphic file (type pdf)
 <use cubpers-eps-converted-to.pdf>
-Package pdftex.def Info: cubpers-eps-converted-to.pdf  used on input line 116.
+Package pdftex.def Info: cubpers-eps-converted-to.pdf  used on input line 118.
 (pdftex.def)             Requested size: 257.96312pt x 273.5212pt.
 
-Overfull \hbox (5.96312pt too wide) in paragraph at lines 116--117
+Overfull \hbox (5.96312pt too wide) in paragraph at lines 118--119
  [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
-
  []
 
 
@@ -1166,6 +1187,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--127
  []
 
 [2 <./cubpers-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
 Package epstopdf Info: Source file: <image_to_complex.eps>
 (epstopdf)                    date: 2022-06-23 16:08:27
 (epstopdf)                    size: 41357 bytes
@@ -1174,13 +1199,13 @@ Package epstopdf Info: Source file: <image_to_complex.eps>
 (epstopdf)                    size: 10708 bytes
 (epstopdf)             Command: <epstopdf --outfile=image_to_complex-eps-conver
 ted-to.pdf image_to_complex.eps>
-(epstopdf)             \includegraphics on input line 133.
+(epstopdf)             \includegraphics on input line 136.
 Package epstopdf Info: Output file is already uptodate.
 <image_to_complex-eps-converted-to.pdf, id=44, 101.37875pt x 55.20625pt>
 File: image_to_complex-eps-converted-to.pdf Graphic file (type pdf)
 <use image_to_complex-eps-converted-to.pdf>
 Package pdftex.def Info: image_to_complex-eps-converted-to.pdf  used on input l
-ine 133.
+ine 136.
 (pdftex.def)             Requested size: 202.75699pt x 110.4122pt.
 Package epstopdf Info: Source file: <wasserstein.eps>
 (epstopdf)                    date: 2022-04-21 18:12:34
@@ -1190,52 +1215,47 @@ Package epstopdf Info: Source file: <wasserstein.eps>
 (epstopdf)                    size: 5304 bytes
 (epstopdf)             Command: <epstopdf --outfile=wasserstein-eps-converted-t
 o.pdf wasserstein.eps>
-(epstopdf)             \includegraphics on input line 143.
+(epstopdf)             \includegraphics on input line 146.
 Package epstopdf Info: Output file is already uptodate.
 <wasserstein-eps-converted-to.pdf, id=45, 129.48375pt x 129.48375pt>
 File: wasserstein-eps-converted-to.pdf Graphic file (type pdf)
 <use wasserstein-eps-converted-to.pdf>
 Package pdftex.def Info: wasserstein-eps-converted-to.pdf  used on input line 1
-43.
+46.
 (pdftex.def)             Requested size: 129.48341pt x 129.48341pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
 
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 150.
+ []
 
+[3 <./image_to_complex-eps-converted-to.pdf> <./wasserstein-eps-converted-to.pd
+f>]
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
-Underfull \vbox (badness 1603) has occurred while \output is active []
+ []
 
- [3 <./image_to_complex-eps-converted-to.pdf> <./wasserstein-eps-converted-to.p
-df>]
 
 Package amsrefs Warning: Use of \cites is recommended instead of \cite 
 (amsrefs)                for multiple cites 'gameiro2016continuation,poulenard2
-018topological' on input line 158.
+018topological' on input line 163.
 
 
-LaTeX Warning: Reference `fig:filtration' on page 4 undefined on input line 158
-.
-
-
-Underfull \hbox (badness 2486) in paragraph at lines 165--166
-\OT1/ptm/m/it/10 sets\OT1/ptm/m/n/10 , which in-cludes mono-tonic func-tions on
- sim-pli-cial
- []
-
-
-Underfull \hbox (badness 1688) in paragraph at lines 165--166
-\OT1/ptm/m/n/10 com-plexes. How-ever, we spe-cial-ize here to the sim-ple,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--175
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
@@ -1245,40 +1265,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--182
  []
 
 
-Underfull \hbox (badness 6575) in paragraph at lines 183--184
-[]\OT1/ptm/m/n/10 By anal-ogy with [[]SWB21b[], SWB21a], we pro-pose
- []
-
-
-Underfull \hbox (badness 3019) in paragraph at lines 183--184
-\OT1/ptm/m/it/10 per-sis-tence\OT1/ptm/m/n/10 , is more ro-bust and flex-i-ble 
-than or-di-nary
- []
-
-
-Underfull \hbox (badness 2856) in paragraph at lines 183--184
-\OT1/ptm/m/n/10 im-por-tant to note that the \OT1/ptm/m/it/10 trans-la-tion equ
-iv-ari-ance \OT1/ptm/m/n/10 of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 2277) in paragraph at lines 205--206
+\OT1/ptm/m/n/10 use con-vo-lu-tions to sta-bi-lize and speed up topo-log-i-cal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 189--190
+Underfull \hbox (badness 1635) in paragraph at lines 210--211
 \OT1/ptm/m/n/10 is known as the \OT1/ptm/m/it/10 Per-sis-tent Ho-mol-ogy Trans-
 form \OT1/ptm/m/n/10 which
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
 
  []
 
@@ -1290,52 +1298,17 @@ Package epstopdf Info: Source file: <embedding.eps>
 (epstopdf)                    size: 27869 bytes
 (epstopdf)             Command: <epstopdf --outfile=embedding-eps-converted-to.
 pdf embedding.eps>
-(epstopdf)             \includegraphics on input line 193.
+(epstopdf)             \includegraphics on input line 214.
 Package epstopdf Info: Output file is already uptodate.
-<embedding-eps-converted-to.pdf, id=75, 261.97874pt x 197.73875pt>
+<embedding-eps-converted-to.pdf, id=76, 261.97874pt x 197.73875pt>
 File: embedding-eps-converted-to.pdf Graphic file (type pdf)
 <use embedding-eps-converted-to.pdf>
-Package pdftex.def Info: embedding-eps-converted-to.pdf  used on input line 193
+Package pdftex.def Info: embedding-eps-converted-to.pdf  used on input line 214
 .
 (pdftex.def)             Requested size: 261.9781pt x 197.73827pt.
 
-Overfull \hbox (9.9781pt too wide) in paragraph at lines 193--194
+Overfull \hbox (9.9781pt too wide) in paragraph at lines 214--215
 [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
-[]\OT1/ptm/m/n/10 An al-ter-na-tive con-vo-lu-tional pipeline is to do a
- []
-
-
-Underfull \hbox (badness 1540) in paragraph at lines 204--205
-\OT1/ptm/m/n/10 con-vo-lu-tional with a small stride, so that the re-sult-ing
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
-
- []
-
-[5 <./embedding-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
-
  []
 
 
@@ -1343,19 +1316,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
-(convpers.bbl
-Underfull \hbox (badness 3679) in paragraph at lines 146--146
+[5 <./embedding-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+[]\OT1/ptm/m/n/10 An al-ter-na-tive con-vo-lu-tional pipeline is to do a
+ []
+
+
+Underfull \hbox (badness 1540) in paragraph at lines 225--226
+\OT1/ptm/m/n/10 con-vo-lu-tional with a small stride, so that the re-sult-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
+
+ []
+
+(convpers.bbl [6]
+Underfull \hbox (badness 3679) in paragraph at lines 172--172
 []\OT1/ptm/m/n/8 Jacob Ley-go-nie and Ul-rike Till-mann, \OT1/ptm/m/it/8 The fi
 ber of per-
  []
 
 
-Underfull \hbox (badness 3492) in paragraph at lines 146--146
+Underfull \hbox (badness 3492) in paragraph at lines 172--172
 \OT1/ptm/m/it/8 sis-tent ho-mol-ogy for sim-pli-cial com-plexes\OT1/ptm/m/n/8 ,
  arXiv preprint
  []
 
-[6])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1367,26 +1375,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 249.
-[7
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 249.
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
  (convpers.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 249.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 249.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 249.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 270.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 270.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 270.
  ) 
 Here is how much of TeX's memory you used:
- 20051 strings out of 492974
- 389416 string characters out of 3125379
- 451985 words of memory out of 3000000
- 23535 multiletter control sequences out of 15000+200000
- 41156 words of font info for 85 fonts, out of 3000000 for 9000
+ 20073 strings out of 492974
+ 389832 string characters out of 3125379
+ 452160 words of memory out of 3000000
+ 23555 multiletter control sequences out of 15000+200000
+ 43819 words of font info for 88 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,10n,82p,1862b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Elchanan/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.
@@ -1409,7 +1411,7 @@ X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Elchanan/AppData/Local/Program
 s/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Elchanan/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Elchanan/AppDat
 a/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on convpers.pdf (7 pages, 264463 bytes).
+Output written on convpers.pdf (7 pages, 265214 bytes).
 PDF statistics:
  158 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
