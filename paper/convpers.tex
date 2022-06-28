@@ -169,16 +169,20 @@ It is also important to note that persistent homology is not an injective invari
 
 Our goal is to introduce a modification to functional persistence of cubical complexes based on the technique of \emph{convolutions} in image processing. To that extent, we specialize to cubical complexes coming from integer grids. To be precise, let $P \subset \mathbb{Z}^d$ be a rectangle inside of the integer lattice, and let $f: P \to \mathbb{R}$ be a function defined on $P$. $P$ can be viewed as the vertex set of an $m$-dimensional cubical complex $K^{m}_{P}$ in which higher-dimensional simplices are given by grid adjacencies, and $f$ can be extended to this complex via the lower-* rule, in which $f(\sigma) = \max_{p \in \sigma}f(p)$, as in {\bf cite relevant background section}.\\
 
+\begin{definition}
 Let $B \subset \mathbb{Z}^d$ be another rectangle, smaller than $P$, and let $g: B \to \mathbb{R}$ be a function on this rectangle; the pair $(B,g)$ acts as a \emph{convolutional filter}. Fix a vector $k = (k_1, \cdots, k_d)$ with $k_i \in \mathbb{N}_{>0}$, corresponding to the \emph{stride} of the convolution. For $v \in \mathbb{Z}^d$ with $B + (v \odot k) \subseteq P$,\footnote{The symbol $\odot$ refers to the Hadamard product, which performs componentwise multiplication between vectors.} define:
 \[(g \ast f)(v) = \sum_{p \in B} g(p)f(p+v \odot k).\]
-Let $R \subset \mathbb{Z}^d$ be the collection of values $r$ such that $B + (r \odot k) \subseteq P$, which is necessarily also a rectangle. The pair $(R, g \ast f)$ is the output of our convolution. $R$ may be much smaller than the support of $f$, since the various translates of $B$ covering this support are not required to overlap much, if at all. In the degenerate setting where $P$ and $B$ are the same shape, $R$ will consist of a single vertex. For the purposes of computing persistence, we will think of $R$, like $P$, as being the vertex set of a cubical complex $K_{R}^{m}$, and we extend functions on $R$ to the entirety of the cubical complex using the lower-* rule.\\
+Let $R \subset \mathbb{Z}^d$ be the collection of values $r$ such that $B + (r \odot k) \subseteq P$, which is necessarily also a rectangle. The pair $(R, g \ast f)$ is the output of our convolution.
+\end{definition}
+
+$R$ may be much smaller than the support of $f$, since the various translates of $B$ covering this support are not required to overlap much, if at all. In the degenerate setting where $P$ and $B$ are the same shape, $R$ will consist of a single vertex. For the purposes of computing persistence, we will think of $R$, like $P$, as being the vertex set of a cubical complex $K_{R}^{m}$, and we extend functions on $R$ to the entirety of the cubical complex using the lower-* rule.\\
 
 We propose that the collection of persistence diagrams of the form $PH(K_{R}^{m},g_{i} \ast f)$, for some set of filter functions $\mathcal{G} = \{g_i\}$, is of greater general utility than $PH(K_{P}^{m},f)$. The computational advantages are immediate: when the stride $k$ is large, so that $R$ is much smaller than $P$, we have replaced a single, very expensive calculation with multiple, significantly faster calculations that can be performed in parallel. Moreover, we claim that this approach, which we deem \emph{convolutional persistence}, is more robust and flexible than ordinary persistence, and has superior inverse properties.\\
 
 %It is also important to note that the \emph{translation equivariance} of convolutions and the \emph{transational invariance} of persistent homology work well together.\\
 
 
-\emph{Stability and robustness} are not hard to justify. If $g$ is a filter function with $\|g\|_{1} \leq 1$, then $\|g \ast f_1 - g \ast f_2 \|_{\infty} \leq \|f_1 - f_2\|_{\infty}$ by Young's convolution inequality, providing stability. A classical example is the \emph{box-smoothing} filter $g(p) = \frac{1}{|B|}$. Such smoothing filters also do a good job of diminishing the impact of outliers Invertibility is the focus of {\bf cite section here}.\\
+%\emph{Stability and robustness} are not hard to justify. If $g$ is a filter function with $\|g\|_{1} \leq 1$, then $\|g \ast f_1 - g \ast f_2 \|_{\infty} \leq \|f_1 - f_2\|_{\infty}$ by Young's convolution inequality, providing stability. A classical example is the \emph{box-smoothing} filter $g(p) = \frac{1}{|B|}$. Such smoothing filters also do a good job of diminishing the impact of outliers Invertibility is the focus of {\bf cite section here}.\\
 
 
 %Now, what we have described above is persistence with a single convolutional layer. One can extend this construction by convolving the collection $\{(R, f \ast g) \mid g \in \mathcal{G}\}$ using a new rectangle $B'$ and collection $\mathcal{H}$ of filter functions $h: B' \to \mathbb{R}$, and \emph{then} compute persistence. This pipeline remains injective, because the collection $\{(R, g \ast f) \mid g: B \to \mathbb{R}\}$ determines the function $f$ (this is trivial, consider characteristic functions of pixels in $B$), so the two-layer convolutional persistence is a composition of two injective operations, where we are now taking the sets $\mathcal{G}$ and $\mathcal{H}$ to consist of \emph{all possible filters}. We might also consider introducing a non-linear activation between the convolutional layers, following more closely the structure of a CNN.\\
@@ -188,7 +192,7 @@ We propose that the collection of persistence diagrams of the form $PH(K_{R}^{m}
 
 %In practice, of course, we are not interested in considering infinitely many filter functions. Indeed, learning tasks require invariants to \emph{retain} features that are important to classification or regression, and \emph{forget} features that are not. Thus, we will want to pick $\mathcal{G}$ appropriately. 
 
-Convolution persistence has the added flexibility of allowing the collection of filters $\mathcal{G}$ to be curated for the task at hand. Indeed, there are many ways for this choice to be made:
+The flexibility of convolutional persistence comes from allowing the collection of filters $\mathcal{G}$ to be curated for the task at hand. Indeed, there are many ways for this choice to be made:
 \begin{enumerate}
 	\item Take $\mathcal{G}$ to consist of a collection of popular filters in image processing, like blurring, sharpening, and boundary detection.
 	%\item Take $\mathcal{G}$ to consist of Klein filters, as identified by Carlsson et al.
@@ -204,46 +208,72 @@ Convolutional persistence is a type of \emph{topological transform}, in which a 
 
 Prior research has also studied the interaction of persistent homology and image convolutions. In \cite{solomon2021fast}, the authors use convolutions to stabilize and speed up topological optimization; the approach taken there can be viewed as a special case of convolutional persistence, in which the filter set $\mathcal{G}$ consists of many random approximations of the box-smoothing filter. Unlike in this work, the goal of \cite{solomon2021fast} is to produce many downsampled images with persistence similar to the original, permitting the computation of robust topological gradients. Another paper that considers both persistence and convolutions is \cite{kim2020pllay}, where the authors develop a topological layer for deep learning models; one such model they consider is a convolutional neural network, and the authors design the network to compute topological features both before and after computing convolutions. However, \cite{kim2020pllay} do not study the interaction of convolutions and persistence in any generality. \\
 
+\section{Theoretical Results}
 
-\newpage
+\begin{prop}[Stability]
+	Let $P,(B,g),R,m$ be as in the definition of convolutional persistence, and let $f_1,f_2: P \to \mathbb{R}$ be two functions on $P$. Then for any $p\geq 1$ we have:
+	\begin{align*}
+	W_{p}(\operatorname{Diag}(f_1 \ast g),\operatorname{Diag}(f_2 \ast g)) & \leq\\ \left(\sum_{i=1}^{m} 2^{m-i} {m \choose i}\right)\|g\|_{1} \|f_1 - f_2\|_{p} & \leq\\ |B| \left(\sum_{i=1}^{m} 2^{m-i} {m \choose i}\right)\|g\|_{\infty} \|f_1 - f_2\|_{p}.
+	\end{align*}
+	
+	
+\end{prop}
+\begin{proof}
+	Young's convolutional inequality states that for $p,q,r \geq 1$ with $\frac{1}{p} + \frac{1}{q} = \frac{1}{r} + 1$,
+	\[\|f \ast g\|_{r} \leq  \|g\|_{q} \|f\|_{p}.\]
+	
+	Setting $r=p$ forces $q=1$, and setting $f = f_1 - f_2$, we obtain the bound $\|f_1 \ast g - f_2 \ast g\|_{p} \leq \|g\|_{1}\|f_1 - f_2\|_{p}$. Since $g$ is supported on a set of $|B|$ elements, we have $\|g\|_{1} \leq |B|\|g\|_{\infty}$, so that $\|f_1 \ast g - f_2 \ast g\|_{p} \leq |B| \|g\|_{\infty}\|f_1 - f_2\|_{p}$. The bound then follows from Theorem 5.1 in \cite{skraba2020wasserstein}, which bounds the $p$-Wasserstein distance between the persistence diagrams associated to two images $f_1,f_2$, in terms of the $p$-norm of their difference.
+\end{proof}
 
-Let us now demonstrate injectivity. For a fixed function $f:P \to \mathbb{R}$ and stride vector $k$, we can obtain a mapping $\iota_{f}$ of the rectangle $R$ into $\mathbb{R}^{|B|}$ by sending every point $r \in R$ to the vector $\{f(b + k \odot r) \mid b \in B\}$. This is technically a set, rather than a vector, but it becomes a vector after fixing an order on the elements of $B$. Such a mapping can be extended linearly to the entire cubical complex $K_{R}$ built on top of $R$. Let us suppose that $\iota_{f}$ is injective on the $m$-skeleton $K_{R}^m$, so that $\iota_{f}(K_{R}^m)$ has the structure of a simplicial complex isomorphic to $K_{R}^m$. Then for a function $g: B \to \mathbb{R}$, viewed also as a vector $\vec{g} \in \mathbb{R}^{|B|}$, and threshold value $t$, the sets $\{\sigma \in K_{R}^{m} \mid g(\sigma) \leq t\}$ and $\{\sigma \in \iota_{f}(K_{R}^m) \mid \sigma \cdot \vec{g} \leq t \}$ are homeomorphic. See Figure \ref{fig:embedding} for a visual schematic. This means that the persistence diagram $PH(K_{R}^m,g \ast f)$ is identical to the persistence diagram $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$. If $g$ is varied over the unit sphere in $\mathbb{R}^{|B|}$, the set of diagrams $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$ is known as the \emph{Persistent Homology Transform} which is known to be injective, see \cite{turner2014persistent,ghrist2018persistent,curry2018many}. Thus, the collection of persistence diagrams of the form $\{PH(K_{R}^m, g \ast f) \mid g : B \to \mathbb{R}\}$ is injective. Note that the distinction between using all functions $g: B \to \mathbb{R}$, or only normalized functions lying on the sphere, is immaterial, as persistent homology transforms trivially under rescaling of the height function, so these two invariants determine one another.\\ 
+We now prove the major theoretical result of the paper, for which we require some preliminary definitions and results.
 
-%\marginnote{\footnotesize \color{red} Cite PHT papers}
+\begin{definition}
+Let $P,(B,g),R,m$ be as in the definition of convolutional persistence. For a fixed function $f:P \to \mathbb{R}$ and stride vector $k$, we can obtain a mapping $\iota_{f}$ of the rectangle $R$ into $\mathbb{R}^{|B|}$ by sending every point $r \in R$ to the vector $\{f(b + k \odot r) \mid b \in B\}$. This is technically a set, rather than a vector, but it becomes a vector after fixing an order on the elements of $B$. Such a mapping can be extended linearly to the entire cubical complex $K_{R}$ built on top of $R$. Let us call the function $f$ \emph{m-good} if $\iota_{f}$ is injective on the $m$-skeleton $K_{R}^m$, so that $\iota_{f}(K_{R}^m)$ has the structure of a simplicial complex isomorphic to $K_{R}^m$.
+\end{definition}
+
+\begin{lemma}
+Suppose that $\kappa = \Pi_{i}k_i > 2m$. Then a generic function $f$ is $m$-good.
+\end{lemma}
+\begin{proof}
+	Let $B^{*} \subseteq B$ consist of those elements in the top-left $k_1 \times k_2 \times \cdots k_d$ corner of $B$. The various translates $B^{*} + (k \odot r)$ are all disjoint subsets of $P$. We can thus view the vertices $\{f(b + k \odot r) \mid b \in B\}$ of $\iota_{f}(K_{R}^m)$ as having at least $\kappa$ degrees of freedom, and this can be made more precise by projecting the embedding on to the coordinates corresponding to $B^*$. We now want to show that if we choose a collection $S$ of points in $\mathbb{R}^{M}$ for $M > 2m$, and build the complete $m$-dimensional complex on top of these points, we will generically never have nontrivial intersections of disjoint simplices. To see why this is the case, let $\sigma$ and $\tau$ be simplices corresponding to disjoint subsets $S_{\sigma}$ and $S_{\tau}$ of $S$. If $\sigma$ and $\tau$ intersect, then their union is contained in an affine subset of $\mathbb{R}^M$ of dimension $(\dim \sigma + \dim \tau)$. Now, whenever $M > \dim \sigma + \dim \tau$, a collection of at least $(\dim \sigma + \dim \tau + 2)$ points generically does not lie on an affine subset of dimension $(\dim \sigma + \dim \tau)$. Since $M > 2m \geq \dim \sigma + \dim \tau$, and $|S_{\sigma} \cup S_{\tau}| = |S_{\sigma}| + |S_{\tau}| = (\dim \sigma + 1) + (\dim \tau + 1) = \dim \sigma + \dim \tau + 2$, we see that the intersection of $\sigma$ and $\tau$ is not generic.
+\end{proof}
+
+\begin{definition}[Convolutional Persistence Transform]
+Let $f: P \to \mathbb{R}$, and fix a filter box $B$, stride vector $k$, and skeleton parameter $m$. The \emph{Convolutional Persistence Transform}  is a mapping $CPT: \mathbb{S}^{|B|-1} \to \mathbf{Diagrams}$ that sends a normalized function $g: B \to \mathbb{R}$ to the persistence diagram of $f \ast g$ on $K_{R}^{m}$. One can similarly define an \emph{Euler characteristic curve} version of this invariant, the \emph{Convolutional Euler Characteristic Transform} (CECT), by computing Euler curves instead of persistence diagrams. 
+\end{definition}
+
+\begin{theorem}[Generic Injectivity of CPT]
+Fix convolutional persistence parameters $P,B,k,m$. The $CPT$ and $CECT$ are injective on the set of $m$-good functions. 
+\end{theorem}
+\begin{proof}
+By hypothesis, if $f$ is $m$-good, $\iota_{f}$ is injective on the $m$-skeleton $K_{R}^m$, so that $\iota_{f}(K_{R}^m)$ has the structure of a simplicial complex isomorphic to $K_{R}^m$. Then for a function $g: B \to \mathbb{R}$, viewed also as a vector $\vec{g} \in \mathbb{R}^{|B|}$, and threshold value $t$, the sets $\{\sigma \in K_{R}^{m} \mid g(\sigma) \leq t\}$ and $\{\sigma \in \iota_{f}(K_{R}^m) \mid \sigma \cdot \vec{g} \leq t \}$ are homeomorphic. See Figure \ref{fig:embedding} for a visual schematic. This means that the persistence diagram $PH(K_{R}^m,g \ast f)$ is identical to the persistence diagram $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$. If $g$ is varied over the unit sphere in $\mathbb{R}^{|B|}$, the set of diagrams $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$ is known as the \emph{Persistent Homology Transform} (PHT) which is known to be injective, see \cite{turner2014persistent,ghrist2018persistent,curry2018many}. Thus, the collection of persistence diagrams of the form $\{PH(K_{R}^m, g \ast f) \mid g : B \to \mathbb{R}\}$ is injective. Injectivity of the Euler characteristic curve version of the PHT then provides injectivity for the CECT.
+\end{proof}
+
+	
 \begin{figure}
 	\includegraphics{embedding}
 	\caption{The function $f$ is defined on the $4 \times 4$ grid on the top left. The box $B$ is $3 \times 3$, and using a $(1,1)$-stride there are four ways of laying $B$ over the domain of $f$, so that $R$ is a $2 \times 2$ grid. We can map the vertices of $R$ into $\mathbb{R}^9$ by associating each vertex of $R$ with its corresponding translate of $B$, and then taking as coordinates the values of $f$ in that translate. This extends linearly to a map $\iota_{f}$ from the complex $K_{R}^2$ in $\mathbb{R}^9$, which here is shown to be an embedding.}
 	\label{fig:embedding}
 \end{figure}
 
-The above proof of injectivity for \emph{convolutional persistence} relies on $\iota_{f}:K_{R}^{m} \to \mathbb{R}^{|B|}$ being injective. We claim that this is generically the case whenever $\kappa = \Pi_{i}k_i > 2m$. Indeed, let $B^{*} \subseteq B$ consist of those elements in the top-left $k_1 \times k_2 \times \cdots k_d$ corner of $B$. The various translates $B^{*} + (k \odot r)$ are all disjoint subsets of $P$. We can thus view the vertices $\{f(b + k \odot r) \mid b \in B\}$ of $\iota_{f}(K_{R}^m)$ as having at least $\kappa$ degrees of freedom, and this can be made more precise by projecting the embedding on to the coordinates corresponding to $B^*$. We now want to show that if we choose a collection $S$ of points in $\mathbb{R}^{M}$ for $M > 2m$, and build the complete $m$-dimensional complex on top of these points, we will generically never have nontrivial intersections of disjoint simplices. To see why this is the case, let $\sigma$ and $\tau$ be simplices corresponding to disjoint subsets $S_{\sigma}$ and $S_{\tau}$ of $S$. If $\sigma$ and $\tau$ intersect, then their union is contained in an affine subset of $\mathbb{R}^M$ of dimension $(\dim \sigma + \dim \tau)$. Now, whenever $M > \dim \sigma + \dim \tau$, a collection of at least $(\dim \sigma + \dim \tau + 2)$ points generically does not lie on an affine subset of dimension $(\dim \sigma + \dim \tau)$. Since $M > 2m \geq \dim \sigma + \dim \tau$, and $|S_{\sigma} \cup S_{\tau}| = |S_{\sigma}| + |S_{\tau}| = (\dim \sigma + 1) + (\dim \tau + 1) = \dim \sigma + \dim \tau + 2$, we see that the intersection of $\sigma$ and $\tau$ is not generic.\\
+\begin{remark}
+	What we have just shown is that having a large stride vector, in addition to providing computational speedups by lowering the resolution of the resultant grid, also provides generic injectivity for persistence of higher-dimensional data complexes.
+\end{remark}
 
-What we have just shown is that having a large stride vector, in addition to providing computational speedups by lowering the resolution of the resultant grid, also provides generic injectivity for persistence of higher-dimensional data complexes.\\ 
+The next injectivity result shows that distinguish two functions $f_1$ and $f_2$, it suffices to use direction vectors in the span of $\iota_{f_1}(K_R^m) \cup \iota_{f_2}(K_R^m)$, which can be interpreted in terms of a basis of patches for generating the images $f_1$ and $f_2$.
 
-Now, what we have described above is persistence with a single convolutional layer. One can extend this construction by convolving the collection $\{(R, f \ast g) \mid g \in \mathcal{G}\}$ using a new rectangle $B'$ and collection $\mathcal{H}$ of filter functions $h: B' \to \mathbb{R}$, and \emph{then} compute persistence. This pipeline remains injective, because the collection $\{(R, g \ast f) \mid g: B \to \mathbb{R}\}$ determines the function $f$ (this is trivial, consider characteristic functions of pixels in $B$), so the two-layer convolutional persistence is a composition of two injective operations, where we are now taking the sets $\mathcal{G}$ and $\mathcal{H}$ to consist of \emph{all possible filters}. We might also consider introducing a non-linear activation between the convolutional layers, following more closely the structure of a CNN.\\
+\newpage
 
-An alternative convolutional pipeline is to do a convolutional with a small stride, so that the resulting image has the same resolution as the original, and then apply a pooling later. This mirrors more closely the structure of a modern CNN. Note that this pipeline also enjoys an inverse result, provided that the corresponding embedding is injective on the input cubical complex.\\
 
-In practice, of course, we are not interested in considering infinitely many filter functions. Indeed, learning tasks require invariants to \emph{retain} features that are important to classification or regression, and \emph{forget} features that are not. Thus, we will want to pick $\mathcal{G}$ appropriately. There are many ways for this choice to be made:
-\begin{enumerate}
-	\item Take $\mathcal{G}$ to consist of a collection of popular filters in image processing, like blurring, sharpening, and boundary detection.
-	\item Take $\mathcal{G}$ to consist of Klein filters, as identified by Carlsson et al.
-	\item Take $\mathcal{G}$ to consist of eigenfilters identified via PCA on the set of patches of images in the training set.
-	\item Incorporate convolutional persistence in a deep learning pipeline and learn $\mathcal{G}$ to minimize a chosen loss function.
-\end{enumerate}
+%Now, what we have described above is persistence with a single convolutional layer. One can extend this construction by convolving the collection $\{(R, f \ast g) \mid g \in \mathcal{G}\}$ using a new rectangle $B'$ and collection $\mathcal{H}$ of filter functions $h: B' \to \mathbb{R}$, and \emph{then} compute persistence. This pipeline remains injective, because the collection $\{(R, g \ast f) \mid g: B \to \mathbb{R}\}$ determines the function $f$ (this is trivial, consider characteristic functions of pixels in $B$), so the two-layer convolutional persistence is a composition of two injective operations, where we are now taking the sets $\mathcal{G}$ and $\mathcal{H}$ to consist of \emph{all possible filters}. We might also consider introducing a non-linear activation between the convolutional layers, following more closely the structure of a CNN.\\
 
-For the third point above, note that the inverse results for the PHT do not require all sphere directions when the shape in question sits inside a low-dimensional space of Euclidean space. Thus, it makes sense to ignore filters orthogonal to the space of image patches in question.\\
+%An alternative convolutional pipeline is to do a convolutional with a small stride, so that the resulting image has the same resolution as the original, and then apply a pooling later. This mirrors more closely the structure of a modern CNN. Note that this pipeline also enjoys an inverse result, provided that the corresponding embedding is injective on the input cubical complex.\\
+
+%For the third point above, note that the inverse results for the PHT do not require all sphere directions when the shape in question sits inside a low-dimensional space of Euclidean space. Thus, it makes sense to ignore filters orthogonal to the space of image patches in question.\\
 
 %and this introduces an important tradeoff in convolutional optimization. When the convolutional rectangle $R$ and the stride $k$ are large, the decrease is resolution is quite substantial, yet the number of free parameters to be learned is large. This makes optimization difficult, but also allows for more sophisticated filters. Conversely, when the rectangle and stride are small, there is a more minor decrease in resolution, but a simpler optimization task. As for learning more complicated filters, this is still possible when there are multiple convolutional layers.\\ 
  
   
-{\bf Prior Work:} This is not the first work where convolutions and persistence have been investigated. They were considered in APE I. They are also mentioned in ``PLLay: Efficient Topological Layer based on Persistence Landscapes". What makes this work unique is that it extends APE I by considering general convolutional layers, rather than noisy box smoothing, and it extends the PPLay paper by considering non-deep-learning approaches to convolutional persistence, focusing on the ability of convolutionals to speed up persistence calculations, rather than just extract more features for a CNN, and investigating more deeply into questions of injectivity and optimization.\\
-
-{\bf Goal:} The goal of this paper is to verify or rule out the following conjectures: 
-\begin{itemize}
-	\item Convolutional persistence can achieve reasonable accuracy on complex learning tasks for shapes defined by height functions over cubical grids.
-	\item Convolutional persistence can be incorporated into other deep learning pipelines and provide some improvement in accuracy.
-\end{itemize}
 
 
 {\bf Experimental Pipeline:}

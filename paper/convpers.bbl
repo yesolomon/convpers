@@ -244,6 +244,14 @@ organization={Wiley Online Library},
        pages={13\ndash 25},
 }
 
+\bib{skraba2020wasserstein}{article}{
+      author={Skraba, Primoz},
+      author={Turner, Katharine},
+       title={Wasserstein stability for persistence diagrams},
+        date={2020},
+     journal={arXiv preprint arXiv:2006.16824},
+}
+
 \bib{solomon2021geometry}{article}{
       author={Solomon, Elchanan},
       author={Wagner, Alexander},
