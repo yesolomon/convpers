@@ -27,6 +27,8 @@
 \backcite {kim2020pllay}{{5}{\unhbox \voidb@x \hbox {III-A}}{}}
 \backcite {kim2020pllay}{{5}{\unhbox \voidb@x \hbox {III-A}}{}}
 \backcite {skraba2020wasserstein}{{5}{IV}{}}
-\backcite {turner2014persistent}{{5}{IV}{}}
-\backcite {ghrist2018persistent}{{5}{IV}{}}
-\backcite {curry2018many}{{5}{IV}{}}
+\backcite {bestvina1997morse}{{5}{IV}{}}
+\backcite {edelsbrunner2010computational}{{5}{IV}{}}
+\backcite {turner2014persistent}{{6}{IV}{}}
+\backcite {ghrist2018persistent}{{6}{IV}{}}
+\backcite {curry2018many}{{6}{IV}{}}

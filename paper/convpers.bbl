@@ -2,6 +2,17 @@
 \begin{bibdiv}
 \begin{biblist}
 
+\bib{bestvina1997morse}{article}{
+      author={Bestvina, Mladen},
+      author={Brady, Noel},
+       title={Morse theory and finiteness properties of groups},
+        date={1997},
+     journal={Inventiones mathematicae},
+      volume={129},
+      number={3},
+       pages={445\ndash 470},
+}
+
 \bib{buchet2014topological}{article}{
       author={Buchet, Micka{\"e}l},
       author={Chazal, Fr{\'e}d{\'e}ric},

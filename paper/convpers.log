@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6700 64-bit) (preloaded format=pdflatex 2018.6.5)  28 JUN 2022 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6700 64-bit) (preloaded format=pdflatex 2018.6.5)  29 JUN 2022 17:27
 entering extended mode
 **./convpers.tex
 (convpers.tex
@@ -1277,14 +1277,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--210
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 217.
+(amsmath)                 on input line 219.
 
 
-Underfull \hbox (badness 5533) in paragraph at lines 222--223
+Underfull \hbox (badness 5533) in paragraph at lines 224--225
 []\OT1/ptm/m/n/10 Young's con-vo-lu-tional in-equal-ity states that for
  []
 
-[5]
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 253.
+
+
+("C:\Users\Elchanan\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.f
+d"
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [5]
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
+
+ []
+
 Package epstopdf Info: Source file: <embedding.eps>
 (epstopdf)                    date: 2022-05-19 19:41:21
 (epstopdf)                    size: 84736 bytes
@@ -1293,32 +1303,32 @@ Package epstopdf Info: Source file: <embedding.eps>
 (epstopdf)                    size: 27869 bytes
 (epstopdf)             Command: <epstopdf --outfile=embedding-eps-converted-to.
 pdf embedding.eps>
-(epstopdf)             \includegraphics on input line 254.
+(epstopdf)             \includegraphics on input line 278.
 Package epstopdf Info: Output file is already uptodate.
 <embedding-eps-converted-to.pdf, id=80, 261.97874pt x 197.73875pt>
 File: embedding-eps-converted-to.pdf Graphic file (type pdf)
 <use embedding-eps-converted-to.pdf>
-Package pdftex.def Info: embedding-eps-converted-to.pdf  used on input line 254
+Package pdftex.def Info: embedding-eps-converted-to.pdf  used on input line 278
 .
 (pdftex.def)             Requested size: 261.9781pt x 197.73827pt.
 
-Overfull \hbox (9.9781pt too wide) in paragraph at lines 254--255
+Overfull \hbox (9.9781pt too wide) in paragraph at lines 278--279
 [][] 
  []
 
-(convpers.bbl
-Underfull \hbox (badness 3679) in paragraph at lines 172--172
+[6 <./embedding-eps-converted-to.pdf>] (convpers.bbl
+Underfull \hbox (badness 3679) in paragraph at lines 183--183
 []\OT1/ptm/m/n/8 Jacob Ley-go-nie and Ul-rike Till-mann, \OT1/ptm/m/it/8 The fi
 ber of per-
  []
 
 
-Underfull \hbox (badness 3492) in paragraph at lines 172--172
+Underfull \hbox (badness 3492) in paragraph at lines 183--183
 \OT1/ptm/m/it/8 sis-tent ho-mol-ogy for sim-pli-cial com-plexes\OT1/ptm/m/n/8 ,
  arXiv preprint
  []
 
-[6 <./embedding-eps-converted-to.pdf>])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1330,22 +1340,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
-[7
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 332.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 332.
  (convpers.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 300.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 300.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 300.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 332.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 332.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 332.
  ) 
 Here is how much of TeX's memory you used:
- 20087 strings out of 492974
- 390023 string characters out of 3125379
- 452226 words of memory out of 3000000
- 23564 multiletter control sequences out of 15000+200000
- 45367 words of font info for 93 fonts, out of 3000000 for 9000
+ 20114 strings out of 492974
+ 390488 string characters out of 3125379
+ 453267 words of memory out of 3000000
+ 23587 multiletter control sequences out of 15000+200000
+ 45681 words of font info for 94 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,10n,82p,1459b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Elchanan/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.
@@ -1369,7 +1377,7 @@ l/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Elchanan/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Elchan
 an/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users
 /Elchanan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on convpers.pdf (7 pages, 280582 bytes).
+Output written on convpers.pdf (7 pages, 285715 bytes).
 PDF statistics:
  162 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

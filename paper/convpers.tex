@@ -97,7 +97,7 @@ To that end, it is important to understand the properties of functional persiste
 
 Our goal in this paper is to introduce a modification to persistence of certain cubical complexes that is (1) faster to compute, (2) more stable to outliers, (3) allows for data-driven tuning, and (4) is provably invertible. Essentially, this technique consists of passing multiple convolutional filters over an image and computing the persistence of the resulting collection of low-resolution outputs. Since this pipeline consists principally of combining convolutions with persistence, we call it \emph{convolutional persistence}.\\
 
-The remainder of the paper is organized as follows. Section II provides a thorough, non-technical survey on persistent homology. Section III defines \emph{convolutional persistence} and reviews prior related work. Section IV contains the major theoretical results of the paper, with the highlight being {\bf Theorem ?} proving injectivity for convolutional persistence. Section V compares ordinary and convolutional persistence on a host of datasets, showing the capacity of convolutional persistence to produce features well-suited for image classification. Finally, Section VI discusses outstanding questions and generalizations of this work.
+The remainder of the paper is organized as follows. Section II provides a thorough, non-technical survey on persistent homology. Section III defines \emph{convolutional persistence} and reviews prior related work. Section IV contains the main theoretical results of the paper, with the highlight being {\bf Theorem ?} proving injectivity for convolutional persistence. Section V compares ordinary and convolutional persistence on a host of datasets, showing the capacity of convolutional persistence to produce features well-suited for image classification. Finally, Section VI discusses outstanding questions and generalizations of this work.
 
 \section{Background}
 \label{sec:background}
@@ -210,8 +210,10 @@ Prior research has also studied the interaction of persistent homology and image
 
 \section{Theoretical Results}
 
+In what follows, we fix an input domain $P$, filter region $B$ and stride vector $k$, resulting rectangle $R$, and a skeleton dimension $m$.
+
 \begin{prop}[Stability]
-	Let $P,(B,g),R,m$ be as in the definition of convolutional persistence, and let $f_1,f_2: P \to \mathbb{R}$ be two functions on $P$. Then for any $p\geq 1$ we have:
+	Let $f_1,f_2: P \to \mathbb{R}$ be two functions on $P$, and $g:B \to \mathbb{R}$ a filter function. Then for any $p\geq 1$ we have:
 	\begin{align*}
 	W_{p}(\operatorname{Diag}(f_1 \ast g),\operatorname{Diag}(f_2 \ast g)) & \leq\\ \left(\sum_{i=1}^{m} 2^{m-i} {m \choose i}\right)\|g\|_{1} \|f_1 - f_2\|_{p} & \leq\\ |B| \left(\sum_{i=1}^{m} 2^{m-i} {m \choose i}\right)\|g\|_{\infty} \|f_1 - f_2\|_{p}.
 	\end{align*}
@@ -225,10 +227,10 @@ Prior research has also studied the interaction of persistent homology and image
 	Setting $r=p$ forces $q=1$, and setting $f = f_1 - f_2$, we obtain the bound $\|f_1 \ast g - f_2 \ast g\|_{p} \leq \|g\|_{1}\|f_1 - f_2\|_{p}$. Since $g$ is supported on a set of $|B|$ elements, we have $\|g\|_{1} \leq |B|\|g\|_{\infty}$, so that $\|f_1 \ast g - f_2 \ast g\|_{p} \leq |B| \|g\|_{\infty}\|f_1 - f_2\|_{p}$. The bound then follows from Theorem 5.1 in \cite{skraba2020wasserstein}, which bounds the $p$-Wasserstein distance between the persistence diagrams associated to two images $f_1,f_2$, in terms of the $p$-norm of their difference.
 \end{proof}
 
-We now prove the major theoretical result of the paper, for which we require some preliminary definitions and results.
+We now prove the main theoretical result of the paper, for which we require some preliminary definitions and results.
 
 \begin{definition}
-Let $P,(B,g),R,m$ be as in the definition of convolutional persistence. For a fixed function $f:P \to \mathbb{R}$ and stride vector $k$, we can obtain a mapping $\iota_{f}$ of the rectangle $R$ into $\mathbb{R}^{|B|}$ by sending every point $r \in R$ to the vector $\{f(b + k \odot r) \mid b \in B\}$. This is technically a set, rather than a vector, but it becomes a vector after fixing an order on the elements of $B$. Such a mapping can be extended linearly to the entire cubical complex $K_{R}$ built on top of $R$. Let us call the function $f$ \emph{m-good} if $\iota_{f}$ is injective on the $m$-skeleton $K_{R}^m$, so that $\iota_{f}(K_{R}^m)$ has the structure of a simplicial complex isomorphic to $K_{R}^m$.
+For a fixed function $f:P \to \mathbb{R}$, we obtain a mapping $\iota_{f}$ of the rectangle $R$ into $\mathbb{R}^{|B|}$ by sending every point $r \in R$ to the vector $\{f(b + k \odot r) \mid b \in B\}$. This is technically a set, rather than a vector, but it becomes a vector after fixing an order on the elements of $B$. Such a mapping can be extended linearly to the entire cubical complex $K_{R}$ built on top of $R$. Let us call the function $f$ \emph{m-good} if $\iota_{f}$ is injective on the $m$-skeleton $K_{R}^m$, so that $\iota_{f}(K_{R}^m)$ has the structure of a simplicial complex isomorphic to $K_{R}^m$.
 \end{definition}
 
 \begin{lemma}
@@ -238,15 +240,37 @@ Suppose that $\kappa = \Pi_{i}k_i > 2m$. Then a generic function $f$ is $m$-good
 	Let $B^{*} \subseteq B$ consist of those elements in the top-left $k_1 \times k_2 \times \cdots k_d$ corner of $B$. The various translates $B^{*} + (k \odot r)$ are all disjoint subsets of $P$. We can thus view the vertices $\{f(b + k \odot r) \mid b \in B\}$ of $\iota_{f}(K_{R}^m)$ as having at least $\kappa$ degrees of freedom, and this can be made more precise by projecting the embedding on to the coordinates corresponding to $B^*$. We now want to show that if we choose a collection $S$ of points in $\mathbb{R}^{M}$ for $M > 2m$, and build the complete $m$-dimensional complex on top of these points, we will generically never have nontrivial intersections of disjoint simplices. To see why this is the case, let $\sigma$ and $\tau$ be simplices corresponding to disjoint subsets $S_{\sigma}$ and $S_{\tau}$ of $S$. If $\sigma$ and $\tau$ intersect, then their union is contained in an affine subset of $\mathbb{R}^M$ of dimension $(\dim \sigma + \dim \tau)$. Now, whenever $M > \dim \sigma + \dim \tau$, a collection of at least $(\dim \sigma + \dim \tau + 2)$ points generically does not lie on an affine subset of dimension $(\dim \sigma + \dim \tau)$. Since $M > 2m \geq \dim \sigma + \dim \tau$, and $|S_{\sigma} \cup S_{\tau}| = |S_{\sigma}| + |S_{\tau}| = (\dim \sigma + 1) + (\dim \tau + 1) = \dim \sigma + \dim \tau + 2$, we see that the intersection of $\sigma$ and $\tau$ is not generic.
 \end{proof}
 
+{\bf Deal with simplicial vs cubical in the analysis above! Maybe shift the paper to only be about simplicial complexes?}
+
+
+
+\begin{prop}
+	Let $K$ be an embedded simplicial complex in $\mathbb{R}^d$ with vertex set $K^{0}$. Let $\Delta$ be an abstract simplicial complex with geometric realization $|\Delta| = K$.
+	Let $T: \mathbb{R}^d \to \mathbb{R}$ be a linear function. We can restrict $T$ to a function on $K$, thus providing a filtration with associated persistence diagram $\operatorname{Diag}(K,T)$. We can also use $T$ to build a filtration on $\Delta$ by extending $T$ from $\Delta^{0} = K^{0}$ via the lower-* filtration, giving a diagram $\operatorname{Diag}(\Delta,T)$. Then 
+	\[\operatorname{Diag}(K,T) = \operatorname{Diag}(\Delta,T).\] 
+\end{prop}
+\begin{proof}
+	This follows from Lemma 2.3 of \cite{bestvina1997morse} and \S VI.3 of \cite{edelsbrunner2010computational}.
+\end{proof}
+
+
 \begin{definition}[Convolutional Persistence Transform]
-Let $f: P \to \mathbb{R}$, and fix a filter box $B$, stride vector $k$, and skeleton parameter $m$. The \emph{Convolutional Persistence Transform}  is a mapping $CPT: \mathbb{S}^{|B|-1} \to \mathbf{Diagrams}$ that sends a normalized function $g: B \to \mathbb{R}$ to the persistence diagram of $f \ast g$ on $K_{R}^{m}$. One can similarly define an \emph{Euler characteristic curve} version of this invariant, the \emph{Convolutional Euler Characteristic Transform} (CECT), by computing Euler curves instead of persistence diagrams. 
+Fix $f: P \to \mathbb{R}$. The \emph{Convolutional Persistence Transform}  is the mapping $CPT(f): \mathbb{S}^{|B|-1} \to \mathbf{Diagrams}$ that sends a normalized function $g: B \to \mathbb{R}$ to the persistence diagram of $f \ast g$ on $K_{R}^{m}$. One can similarly define an \emph{Euler characteristic curve} version of this invariant, the \emph{Convolutional Euler Characteristic Transform} (CECT), by computing Euler characteristic curves instead of persistence diagrams. 
 \end{definition}
 
 \begin{theorem}[Generic Injectivity of CPT]
-Fix convolutional persistence parameters $P,B,k,m$. The $CPT$ and $CECT$ are injective on the set of $m$-good functions. 
+The $CPT$ and $CECT$ are injective on the set of $m$-good functions. In other words, if $f_1 \neq f_2$ are two $m$-good functions, $CPT(f_1) \neq CPT(f_2)$ and $CECT(f_1) \neq CECT(f_2)$ as functions on $\mathbb{S}^{|B|-1}$.
 \end{theorem}
 \begin{proof}
-By hypothesis, if $f$ is $m$-good, $\iota_{f}$ is injective on the $m$-skeleton $K_{R}^m$, so that $\iota_{f}(K_{R}^m)$ has the structure of a simplicial complex isomorphic to $K_{R}^m$. Then for a function $g: B \to \mathbb{R}$, viewed also as a vector $\vec{g} \in \mathbb{R}^{|B|}$, and threshold value $t$, the sets $\{\sigma \in K_{R}^{m} \mid g(\sigma) \leq t\}$ and $\{\sigma \in \iota_{f}(K_{R}^m) \mid \sigma \cdot \vec{g} \leq t \}$ are homeomorphic. See Figure \ref{fig:embedding} for a visual schematic. This means that the persistence diagram $PH(K_{R}^m,g \ast f)$ is identical to the persistence diagram $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$. If $g$ is varied over the unit sphere in $\mathbb{R}^{|B|}$, the set of diagrams $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$ is known as the \emph{Persistent Homology Transform} (PHT) which is known to be injective, see \cite{turner2014persistent,ghrist2018persistent,curry2018many}. Thus, the collection of persistence diagrams of the form $\{PH(K_{R}^m, g \ast f) \mid g : B \to \mathbb{R}\}$ is injective. Injectivity of the Euler characteristic curve version of the PHT then provides injectivity for the CECT.
+Since $f$ is $m$-good, $\iota_{f}$ is injective, and hence a homeomorphism on to its image. Fix a function $g: B \to \mathbb{R}$. For any simplex $\sigma \in K_{R}^m$, the lower-* rule says that $(f \ast g)(\sigma) = \max_{r \in \sigma} (f \ast g)(r)$. If we view $g$ as a vector $\vec{g} \in \mathbb{R}^{|B|}$, we see that $(f \ast g)(r) = \iota_{f}(r) \cdot \vec{g}$ for all $r \in R$.\\
+
+{\bf flesh out using prior prop...}
+
+Thus for any subcomplex $S \subset K_{R}^m$, we can identify $S$ and $\iota_{f}(S)$. For a function $g: B \to \mathbb{R}$, viewed also as a vector $\vec{g} \in \mathbb{R}^{|B|}$, observe that $(f \ast g)(r) = \iota_{f}(r) \cdot \vec{g}$ for all $r \in R$. Thus, the filtration induced by $f \ast g$ on the set $R$ (viewed as the vertex set of $K_{R}^m$) is identical to the filtration induced on $\iota_{f}(R)$ by the function $\langle \cdot, \vec{g} \rangle$. The filtration produced by $g \ast f$ extends to $K_{R}^m$ via the lower-* rule, and the filtration produced by the function $\langle \cdot, \vec{g} \rangle$ extends from $\iota_{f}(R)$ to $\iota_{f}(K_{r}^m)$
+	
+By hypothesis, if $f$ is $m$-good, $\iota_{f}$ is injective on the $m$-skeleton $K_{R}^m$, and hence a homeomorphism on to its image. Then for a function $g: B \to \mathbb{R}$, viewed also as a vector $\vec{g} \in \mathbb{R}^{|B|}$, we can observe that $(f \ast g)(r) = \iota_{f}(r) \cdot \vec{g}$ for all $r \in R$. Thus, the filtration induced by $f \ast g$ on the set $R$ (viewed as the vertex set of $K_{R}^m$) is identical to the filtration induced on $\iota_{f}(R)$ by the function $\langle \cdot, \vec{g} \rangle$. Th
+
+and threshold value $t$, the sets $\{\sigma \in K_{R}^{m} \mid g(\sigma) \leq t\}$ and $\{\sigma \in \iota_{f}(K_{R}^m) \mid \sigma \cdot \vec{g} \leq t \}$ are homeomorphic. See Figure \ref{fig:embedding} for a visual schematic. This means that the persistence diagram $PH(K_{R}^m,g \ast f)$ is identical to the persistence diagram $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$. If $g$ is varied over the unit sphere in $\mathbb{R}^{|B|}$, the set of diagrams $PH(\iota_{f}(K_{R}^m),\langle g, \cdot \rangle)$ is known as the \emph{Persistent Homology Transform} (PHT) of $\iota_{f}(K_{R}^m)$ which is known to uniquely determine $\iota_{f}(K_{R}^m)$, see \cite{turner2014persistent,ghrist2018persistent,curry2018many}. Since $\iota_{f}(K_{R}^m)$ uniquely determines the function $f$, the collection of persistence diagrams of the form $\{PH(K_{R}^m, g \ast f) \mid g : B \to \mathbb{R}\}$ uniquely determines $f$. Injectivity of the Euler characteristic curve version of the PHT then provides injectivity for the CECT.
 \end{proof}
 
 	
@@ -261,6 +285,14 @@ By hypothesis, if $f$ is $m$-good, $\iota_{f}$ is injective on the $m$-skeleton 
 \end{remark}
 
 The next injectivity result shows that distinguish two functions $f_1$ and $f_2$, it suffices to use direction vectors in the span of $\iota_{f_1}(K_R^m) \cup \iota_{f_2}(K_R^m)$, which can be interpreted in terms of a basis of patches for generating the images $f_1$ and $f_2$.
+
+\begin{definition}
+	For a given function $f:P \to \mathbb{R}$, we say that a filter function $g:B \to \mathbb{R}$ is \emph{convolutionally orthogonal} to $f$ if $f \ast g = 0$, i.e. $(f \ast g)(r) = 0$ for all $r \in R$. We write $f^{\ddagger}$ to indicate all functions convolutionally orthogonal to $f$.
+\end{definition}
+
+\begin{corollary}
+	Let $f_1, f_2 : P \to \mathbb{R}$ be two functions, and write $\mathcal{G} = f_{1}^{\ddagger} \cup f_{2}^{\ddagger}$. If $\operatorname{Diag}(f_1 \ast g) = \operatorname{Diag}(f_2 \ast g)$ for all $g \in \mathcal{G}$, then $f_1 = f_2$, and the same is true replacing persistence diagrams with Euler characteristic curves.
+\end{corollary}
 
 \newpage
 
